@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="1.    排序(Sorting)排序问题是程序设计中的典型问题，它有很广泛的应用，其功能是将一个数据元素序列的无序序列调整为有序序列。 2.    冒泡排序(BoubleSort)的基本思想 通过相邻两个元素之间的比较和交换 使值较小的元素逐渐从顶部移向底部（沉底） 值较大的元素逐渐从底部移向顶部（上浮） 冒泡由此得名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BoubleSort">
+<meta property="og:url" content="http://example.com/2021/11/28/BoubleSort/index.html">
+<meta property="og:site_name" content="Victor&#39;s Teaching Machine">
+<meta property="og:description" content="1.    排序(Sorting)排序问题是程序设计中的典型问题，它有很广泛的应用，其功能是将一个数据元素序列的无序序列调整为有序序列。 2.    冒泡排序(BoubleSort)的基本思想 通过相邻两个元素之间的比较和交换 使值较小的元素逐渐从顶部移向底部（沉底） 值较大的元素逐渐从底部移向顶部（上浮） 冒泡由此得名">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/11/28/BoubleSort/hackerearth-boublesort.png">
+<meta property="og:image" content="http://example.com/2021/11/28/BoubleSort/boublesort.drawio.png">
+<meta property="article:published_time" content="2021-11-28T12:12:02.000Z">
+<meta property="article:modified_time" content="2021-11-29T02:12:27.504Z">
+<meta property="article:author" content="Victor">
+<meta property="article:tag" content="冒泡排序BoubleSort">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="排序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/11/28/BoubleSort/hackerearth-boublesort.png">
+
+
+<link rel="canonical" href="http://example.com/2021/11/28/BoubleSort/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/11/28/BoubleSort/","path":"2021/11/28/BoubleSort/","title":"BoubleSort"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BoubleSort | Victor's Teaching Machine</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Victor's Teaching Machine</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section">分类</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section">标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%8E%92%E5%BA%8F-Sorting"><span class="nav-text">1.    排序(Sorting)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-BoubleSort-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">2.    冒泡排序(BoubleSort)的基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E7%9A%84%E8%BF%87%E7%A8%8B%E5%9B%BE%E7%A4%BA-e-g-A-7-4-5-2"><span class="nav-text">3.    冒泡排序的过程图示 e.g. A [ ] &#x3D; { 7, 4, 5, 2}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E7%9A%84%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90-e-g-A-7-4-5-2"><span class="nav-text">4.     冒泡排序的过程分析 e.g. A [ ] &#x3D; { 7, 4, 5, 2}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">5.    代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-N-1-i"><span class="nav-text">6.     深入理解 N-1-i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%B0%8F%E7%BB%93"><span class="nav-text">7.     小结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Victor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/28/BoubleSort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Victor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Victor's Teaching Machine">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BoubleSort
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-28 20:12:02" itemprop="dateCreated datePublished" datetime="2021-11-28T20:12:02+08:00">2021-11-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-29 10:12:27" itemprop="dateModified" datetime="2021-11-29T10:12:27+08:00">2021-11-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/18CD02CPlusPlus/" itemprop="url" rel="index"><span itemprop="name">18CD02CPlusPlus</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="1-排序-Sorting"><a href="#1-排序-Sorting" class="headerlink" title="1.    排序(Sorting)"></a>1.    排序(Sorting)</h3><p>排序问题是程序设计中的典型问题，它有很广泛的应用，其功能是将一个数据元素序列的<em><strong>无序序列</strong></em>调整为<em><strong>有序序列</strong></em>。</p>
+<h3 id="2-冒泡排序-BoubleSort-的基本思想"><a href="#2-冒泡排序-BoubleSort-的基本思想" class="headerlink" title="2.    冒泡排序(BoubleSort)的基本思想"></a>2.    冒泡排序(BoubleSort)的基本思想</h3><ul>
+<li>通过<em><strong>相邻</strong></em>两个元素之间的<em><strong>比较</strong></em>和<em><strong>交换</strong></em></li>
+<li>使值<em><strong>较小</strong></em>的元素逐渐从<em><strong>顶部</strong></em>移向<em><strong>底部</strong></em>（<em><strong>沉底</strong></em>）</li>
+<li>值<em><strong>较大</strong></em>的元素逐渐从<em><strong>底部</strong></em>移向<em><strong>顶部</strong></em>（<em><strong>上浮</strong></em>）</li>
+<li><em><strong>冒泡</strong></em>由此得名</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="3-冒泡排序的过程图示-e-g-A-7-4-5-2"><a href="#3-冒泡排序的过程图示-e-g-A-7-4-5-2" class="headerlink" title="3.    冒泡排序的过程图示 e.g. A [ ] = { 7, 4, 5, 2}"></a>3.    冒泡排序的过程图示 e.g. <code>A [ ] = &#123; 7, 4, 5, 2&#125;</code></h3><p><img src="/2021/11/28/BoubleSort/hackerearth-boublesort.png" alt="hackerearth-boublesort"></p>
+<h3 id="4-冒泡排序的过程分析-e-g-A-7-4-5-2"><a href="#4-冒泡排序的过程分析-e-g-A-7-4-5-2" class="headerlink" title="4.     冒泡排序的过程分析 e.g. A [ ] = { 7, 4, 5, 2}"></a>4.     冒泡排序的过程分析 e.g. <code>A [ ] = &#123; 7, 4, 5, 2&#125;</code></h3><p><img src="/2021/11/28/BoubleSort/boublesort.drawio.png" alt="boublesort"></p>
+<h3 id="5-代码实现"><a href="#5-代码实现" class="headerlink" title="5.    代码实现"></a>5.    代码实现</h3><ul>
+<li>外循环：<code>N-1</code>趟</li>
+<li>内循环：第 <code>i</code> 趟：<code>N-1-i</code> 次</li>
+<li>交换操作</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> A[] = &#123;<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> N = <span class="built_in"><span class="keyword">sizeof</span></span>(A)/<span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">int</span>);  <span class="comment">//计算数组长度</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)&#123;        <span class="comment">//外循环:（N-1）次</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N<span class="number">-1</span>-i;j++)   <span class="comment">//内循环：第i趟比较（N-1-i）次</span></span><br><span class="line">        <span class="keyword">if</span>(A[j]&gt;A[j+<span class="number">1</span>])&#123;            <span class="comment">//如果前面的数比后面的数大，交换</span></span><br><span class="line">            <span class="keyword">int</span> temp = A[j];</span><br><span class="line">            A[j] = A[j+<span class="number">1</span>];</span><br><span class="line">            A[j+<span class="number">1</span>] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    输出排序后的数</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        cout &lt;&lt; A[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-深入理解-N-1-i"><a href="#6-深入理解-N-1-i" class="headerlink" title="6.     深入理解 N-1-i"></a>6.     深入理解 <code>N-1-i</code></h3><p><code>N-1-i</code> 为的是忽略前面几趟通过比较已经排好序的元素</p>
+<h3 id="7-小结"><a href="#7-小结" class="headerlink" title="7.     小结"></a>7.     小结</h3><ul>
+<li>冒泡排序</li>
+<li>代码优化</li>
+</ul>
+<p>Reference:    <a target="_blank" rel="noopener" href="https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/tutorial/">https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/tutorial/</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8FBoubleSort/" rel="tag"># 冒泡排序BoubleSort</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"># 排序</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/17/%E6%95%B0%E7%BB%84%E7%BB%83%E4%B9%A0/" rel="prev" title="数组练习">
+                  <i class="fa fa-chevron-left"></i> 数组练习
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Victor</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>
